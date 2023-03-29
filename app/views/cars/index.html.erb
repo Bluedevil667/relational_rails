@@ -1,0 +1,30 @@
+<h1>Cars Index</h1>
+<table>
+  <thead>
+    <tr>
+      <th>Make</th>
+      <th>Model</th>
+      <th>Year</th>
+      <th>Created At</th>
+      <th># of Parts</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @cars.each do |car| %>
+      <tr>
+        <td><%= car.make %></td>
+        <td><%= car.model %></td>
+        <td><%= car.year %></td>
+        <td><%= car.created_at %></td>
+        <td><%= car.part_count %></td>
+        <td>
+          <%= link_to 'Show', car %>
+          <%= link_to 'Edit', edit_car_path(car) %>
+          <%= link_to 'Destroy', car, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+  <p><%= link_to "New Car", new_car_path %></p>
+</table>

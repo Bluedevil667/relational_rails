@@ -1,0 +1,55 @@
+<% if @car.present? %>
+  <h1>Parts for <%= @car.make %> <%= @car.model %></h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Part Number</th>
+        <th>Manufacturer</th>
+        <th>Price</th>
+        <th>Description</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @parts.each do |part| %>
+        <tr>
+          <td><%= part.name %></td>
+          <td><%= part.part_number %></td>
+          <td><%= part.manufacturer %></td>
+          <td><%= number_to_currency(part.price) %></td>
+          <td><%= part.description %></td>
+        </tr>
+      <% end %>
+      <p><%= link_to "Add New Part", new_car_part_path(@car) %></p>
+    </tbody>
+  </table>
+<% else %>
+  <h1>Parts Index</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Part Number</th>
+        <th>Manufacturer</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @parts.each do |part| %>
+      <tr>
+        <td><%= part.name %></td>
+        <td><%= part.part_number %></td>
+        <td><%= part.manufacturer %></td>
+        <td><%= part.price %></td>
+        <td><%= part.description %></td>
+        <td>
+          <%= link_to 'Edit', '/cars/:id/parts/:id/edit' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+  <p><%= link_to "New Part", 'cars/:id/parts/new' %></p>
+<% end %>
+

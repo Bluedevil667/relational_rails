@@ -1,0 +1,12 @@
+<h1> Car Specs: </h1>
+
+<% if @car %>
+  <p>Make: <%= @car.make %></p>
+  <p>Model: <%= @car.model %></p>
+  <p>Year: <%= @car.year %></p>
+  <p><%= link_to "This Car's Parts", car_parts_path(@car) %></p>
+  <p><%= link_to "Update Car", edit_car_path(@car) %><p>
+
+<% else %>
+  <p>No car found with that ID</p>
+<% end %>
